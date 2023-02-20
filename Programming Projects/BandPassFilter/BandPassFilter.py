@@ -26,7 +26,7 @@ import wave
 
 # Read the wav file (mono)
 
-samplingFrequency, signalData = wavfile.read('add your wav file here.wav')
+samplingFrequency, signalData = wavfile.read('add_your_wav_file_here.wav')
 samplingFrequency
 
 def plot_audio_samples(title, samples, sampleRate, tStart=None, tEnd=None):
@@ -144,13 +144,13 @@ tStart=0
 tEnd=len(signalData)/samplingFrequency
 tEnd
 
-channels, nChannels, sampleRate, ampWidth, nFrames = extract_audio('SG2sZKL8_2019-09-14-05-54-17-754_2019-09-14-05-56-17-750_153.wav', tStart, tEnd)
+channels, nChannels, sampleRate, ampWidth, nFrames = extract_audio('add_your_wav_file_here.wav', tStart, tEnd)
 
 #Convert audio to mono. No issue here. Audio files are already mono
 samples = convert_to_mono(channels, nChannels, np.int16)
 
 # Plot the original audio file and its spectrogram
-plot_audio_samples("SG2sZKL8_2019-09-14-05-54-17-754_2019-09-14-05-56-17-750_153.wav", samples, sampleRate, tStart, tEnd)
+plot_audio_samples("add_your_wav_file_here.wav", samples, sampleRate, tStart, tEnd)
 
 
 # Apply the low pass filter. As we don't care about the low pass filter, we set it to 0. 
@@ -165,9 +165,9 @@ hp_samples_filtered = fir_high_pass(hp_samples_filtered, sampleRate,175, 461, np
 samples_filtered = np.mean(np.array([lp_samples_filtered, hp_samples_filtered]), axis=0).astype(np.int16)
 
 #Plot the new audio file and its spectogram with the high pass filter applied. 
-plot_audio_samples("SG2sZKL8_2019-09-14-05-54-17-754_2019-09-14-05-56-17-750_153.wav", samples_filtered, sampleRate, tStart, tEnd)
+plot_audio_samples("add_your_wav_file_here.wav", samples_filtered, sampleRate, tStart, tEnd)
 
 #Create the new audio file with the high pass filter applied.
-wavfile.write('High_Pass_Filter_175Hz_SG2sZKL8_2019-09-14-05-54-17-754_2019-09-14-05-56-17-750_153.wav', sampleRate, samples_filtered)
+wavfile.write('High_Pass_Filter_175Hz_add_your_wav_file_here.wav', sampleRate, samples_filtered)
 
 
